@@ -1,0 +1,13 @@
+{
+  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "plugins": ["flowtype", "import", "jsx-a11y", "react"],
+  "rules": {
+    "react/jsx-filename-extension": 0
+  },
+  "env": {
+    "browser": true
+  },
+  "settings": {
+    "polyfills": ["fetch"]
+  }
+}
