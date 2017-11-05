@@ -7,23 +7,21 @@ import ReduxThunk from 'redux-thunk';
 import ReduxLogger from 'redux-logger';
 
 import './App.css';
-import logo from './logo.svg';
-import filmReducer from './reducers/filmReducer';
+import reducers from './reducers';
 
-import Root from './containers/Root';
+import Header from './components/Header';
+import Filters from './containers/Filters';
+import FilmList from './containers/FilmList';
 
-const store = createStore(filmReducer, {}, applyMiddleware(ReduxThunk, ReduxLogger));
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk, ReduxLogger));
 
 export default function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          {/* eslint-disable jsx-a11y/accessible-emoji */}
-          <h1 className="App-title">Welcome to Ghibli Search Interface 😻🔍</h1>
-        </header>
-        <Root />
+        <Header />
+        <Filters />
+        <FilmList />
       </div>
     </Provider>
   );

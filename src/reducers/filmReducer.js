@@ -3,9 +3,7 @@
 import { STORE_FILMS } from '../actions/actionTypes';
 import type { Film } from '../flowTypes/filmType';
 
-const initialState = [];
-
-function filmReducer(state: Film[] = initialState, action: { type: string, payload: any }) {
+export default function filmReducer(state: Film[] = [], action: { type: string, payload: any }) {
   switch (action.type) {
     case STORE_FILMS:
       return [...state, ...action.payload];
@@ -14,5 +12,3 @@ function filmReducer(state: Film[] = initialState, action: { type: string, paylo
       return state;
   }
 }
-
-export default filmReducer;

@@ -9,7 +9,7 @@ type Props = {
   films: Film[],
 };
 
-export default function FilmList(props: Props) {
+export default function FilmTable(props: Props) {
   // Parse number properties to be correctly sorted by React Table
   const normalizedFilms = props.films.map(film => ({
     ...film,
