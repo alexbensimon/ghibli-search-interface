@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import ReduxLogger from 'redux-logger';
 
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
+import filmReducer from './reducers/filmReducer';
 
-const store = createStore(() => {}, {}, applyMiddleware(ReduxThunk, ReduxLogger));
+import Root from './containers/Root';
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-        </div>
-      </Provider>
-    );
-  }
+const store = createStore(filmReducer, {}, applyMiddleware(ReduxThunk, ReduxLogger));
+
+export default function App() {
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          {/* eslint-disable jsx-a11y/accessible-emoji */}
+          <h1 className="App-title">Welcome to Ghibli Search Interface 😻🔍</h1>
+        </header>
+        <Root />
+      </div>
+    </Provider>
+  );
 }
-
-export default App;
